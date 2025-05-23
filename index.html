@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balasubramaniyam B - Software Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header .title {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .education-item, .cert-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-item h3, .cert-item h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .education-item .institution {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .education-item .score {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .project {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .project h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .activities-list {
+            list-style: none;
+        }
+
+        .activities-list li {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .activities-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 8px;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <button class="nav-btn" onclick="scrollToSection('header')">Home</button>
+        <button class="nav-btn" onclick="scrollToSection('skills')">Skills</button>
+        <button class="nav-btn" onclick="scrollToSection('projects')">Projects</button>
+        <button class="nav-btn" onclick="scrollToSection('education')">Education</button>
+    </div>
+
+    <div class="container">
+        <header class="header" id="header">
+            <div class="profile-img">BB</div>
+            <h1>Balasubramaniyam B</h1>
+            <p class="title">Software Developer</p>
+            <div class="contact-info">
+                <a href="mailto:balabaskaran2004@gmail.com" class="contact-item">
+                    📧 balabaskaran2004@gmail.com
+                </a>
+                <a href="tel:+916385917233" class="contact-item">
+                    📞 +91-6385917233
+                </a>
+                <a href="#" class="contact-item">
+                    💼 LinkedIn
+                </a>
+                <a href="#" class="contact-item">
+                    🐱 GitHub
+                </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>About Me</h2>
+            <p class="summary">
+                Enthusiastic Software Engineer with strong programming, problem-solving, and development skills. 
+                Passionate about learning new technologies and applying innovative solutions. Seeking to contribute 
+                technical expertise and collaborate in a dynamic team environment.
+            </p>
+        </section>
+
+        <section class="section" id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java Full Stack</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">Machine Learning</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Time Management</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <h2>Featured Project</h2>
+            <div class="project">
+                <h3>College Recommendation System</h3>
+                <p>
+                    Developed a web-based College Recommendation System using Python, Flask, and K-Means clustering 
+                    to help students choose colleges based on academics, preferences, and career goals. Integrated 
+                    machine learning techniques like collaborative filtering and NLP to analyze factors like location, 
+                    faculty, research, and alumni outcomes. Designed an intuitive UI for personalized, data-driven recommendations.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Technology</h3>
+                <div class="institution">K Ramakrishnan College Of Engineering (Autonomous), Trichy</div>
+                <div>Computer Science and Business Systems</div>
+                <div class="score">CGPA: 7.77/10</div>
+            </div>
+            <div class="education-item">
+                <h3>Higher Secondary Certificate</h3>
+                <div class="institution">Christ The King Matriculation Higher Secondary School, Kumbakonam</div>
+                <div class="score">Percentage: 78% | 2021-2022</div>
+            </div>
+            <div class="education-item">
+                <h3>Secondary School Leaving Certificate</h3>
+                <div class="institution">Christ The King Matriculation Higher Secondary School, Kumbakonam</div>
+                <div class="score">Percentage: 75.8% | 2019-2020</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Certifications</h2>
+            <div class="cert-item">
+                <h3>PGDCA (C language)</h3>
+            </div>
+            <div class="cert-item">
+                <h3>Java Fullstack</h3>
+            </div>
+            <div class="cert-item">
+                <h3>Python Programming</h3>
+            </div>
+            <div class="cert-item">
+                <h3>Machine Learning For All (Coursera)</h3>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Experience & Activities</h2>
+            <div class="education-item">
+                <h3>Vice President, Innovit Students Association</h3>
+                <div class="institution">2024-2025</div>
+                <div>Leadership role in student organization</div>
+            </div>
+            <div class="education-item">
+                <h3>Web Development Internship</h3>
+                <div class="institution">TechnoHacks Solutions Pvt. Ltd.</div>
+                <div>Completed online internship in Web Development</div>
+            </div>
+            <ul class="activities-list">
+                <li>Author in an Anthology Poem Book called "Muthal Poi"</li>
+                <li>Organised Symposium Event (Scrum) and Conducted Quiz Programs</li>
+                <li>Participated and won prizes in college culturals and several non-technical events</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Add smooth scrolling animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.2s';
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
